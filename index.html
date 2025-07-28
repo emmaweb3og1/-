@@ -3,272 +3,138 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Emmanuel’s Blog</title>
+  <title>My Personal Store</title>
+
+  <!-- Snipcart CSS -->
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.css"/>
+
   <style>
-    /* --- Reset & Base --- */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      line-height: 1.6;
-      background: #f9f9f9;
-      color: #333;
-    }
-    .container {
-      width: 90%;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    /* --- Header & Nav --- */
-    header {
-      background: #222;
-      color: #fff;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    header .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 0;
-    }
-    header h1 a {
-      color: #fff;
-      text-decoration: none;
-    }
-    nav {
-      display: flex;
-      gap: 1rem;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    #nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    /* --- Sections --- */
-    section.page {
-      display: none;
-      padding: 2rem 0;
-    }
-    section.page.active {
-      display: block;
-    }
-
-    /* --- Home Intro & Posts --- */
-    #home .intro {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    .post-preview {
-      background: #fff;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 4px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-    .post-preview h3 a {
-      text-decoration: none;
-      color: #222;
-    }
-    .post-preview .meta {
-      font-size: 0.9rem;
-      color: #777;
-      margin-bottom: .5rem;
-    }
-
-    /* --- Single Post --- */
-    .post-single {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 4px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-    .post-single .meta {
-      font-size: 0.9rem;
-      color: #777;
-      margin-bottom: 1rem;
-    }
-
-    /* --- Forms --- */
-    form {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      min-height: 100vh;
     }
-    form label { font-weight: bold; }
-    form input,
-    form textarea {
-      padding: 0.5rem;
-      border: 1px solid #ccc;
+    header {
+      background: #333;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+    main {
+      flex: 1;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    .product {
+      border: 1px solid #ddd;
       border-radius: 4px;
-    }
-    form button {
-      padding: 0.7rem;
-      border: none;
-      background: #222;
-      color: #fff;
-      font-size: 1rem;
-      cursor: pointer;
-      border-radius: 4px;
-      margin-top: .5rem;
-    }
-    .hidden { display: none; }
-
-    /* --- Footer --- */
-    footer {
-      background: #222;
-      color: #fff;
+      padding: 1rem;
       text-align: center;
-      padding: 1rem 0;
-      margin-top: 2rem;
     }
-
-    /* --- Responsive Nav --- */
-    @media (max-width: 600px) {
-      #nav-toggle { display: block; }
-      nav {
-        position: absolute;
-        top: 70px;
-        right: 10px;
-        flex-direction: column;
-        background: #222;
-        padding: 1rem;
-        border-radius: 4px;
-        display: none;
-      }
-      nav.show { display: flex; }
+    .product img {
+      max-width: 100%;
+      height: auto;
+    }
+    .product h2 {
+      margin: 0.5rem 0;
+      font-size: 1.2rem;
+    }
+    .product p {
+      margin: 0.5rem 0;
+    }
+    .snipcart-add-item {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: #28a745;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    footer {
+      background: #f7f7f7;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="container">
-      <h1><a href="#home">Emmanuel’s Blog</a></h1>
-      <button id="nav-toggle" aria-label="Toggle navigation">☰</button>
-      <nav id="nav-menu">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <a href="#post1">Post 1</a>
-        <a href="#post2">Post 2</a>
-      </nav>
-    </div>
+    <a href="/">My Store</a>
+    <button
+      class="snipcart-checkout"
+      style="background:none;border:none;color:white;font-size:1.2rem;cursor:pointer;"
+    >
+      🛒 Cart
+    </button>
   </header>
 
-  <main class="container">
-    <!-- Home Section -->
-    <section id="home" class="page active">
-      <div class="intro">
-        <h2>Welcome!</h2>
-        <p>This is where I share thoughts on tech, culture, and life’s little moments. Dive in and enjoy.</p>
-      </div>
-      <div class="posts">
-        <h2>Latest Posts</h2>
-        <article class="post-preview">
-          <h3><a href="#post1">My First Blog Post</a></h3>
-          <p class="meta">July 28, 2025</p>
-          <p>Jumping into the blog world: why I write and what you can expect here.</p>
-        </article>
-        <article class="post-preview">
-          <h3><a href="#post2">Why Static Sites Rock</a></h3>
-          <p class="meta">July 30, 2025</p>
-          <p>Exploring the power of simplicity—why building static is often the smartest choice.</p>
-        </article>
-      </div>
-    </section>
+  <main>
+    <!-- Product 1 -->
+    <div class="product">
+      <img src="https://via.placeholder.com/300x200" alt="Product 1 Image"/>
+      <h2>Product One</h2>
+      <p>$19.99</p>
+      <button
+        class="snipcart-add-item"
+        data-item-id="prod-1"
+        data-item-price="19.99"
+        data-item-url="/"
+        data-item-description="A great item to start with."
+        data-item-image="https://via.placeholder.com/300x200"
+        data-item-name="Product One"
+      >
+        Add to Cart
+      </button>
+    </div>
 
-    <!-- About Section -->
-    <section id="about" class="page">
-      <h2>About Me</h2>
-      <p>Hey there! I’m Emmanuel, a lifelong learner obsessed with how technology shapes our stories. This blog is my canvas to explore ideas, share tutorials, and reflect on daily discoveries.</p>
-      <p>When I’m not writing, you’ll find me sketching UI concepts, sipping strong coffee, or wandering around Uyo, Nigeria, looking for inspiration.</p>
-    </section>
+    <!-- Product 2 -->
+    <div class="product">
+      <img src="https://via.placeholder.com/300x200" alt="Product 2 Image"/>
+      <h2>Product Two</h2>
+      <p>$29.99</p>
+      <button
+        class="snipcart-add-item"
+        data-item-id="prod-2"
+        data-item-price="29.99"
+        data-item-url="/"
+        data-item-description="Even better than the first."
+        data-item-image="https://via.placeholder.com/300x200"
+        data-item-name="Product Two"
+      >
+        Add to Cart
+      </button>
+    </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="page">
-      <h2>Get in Touch</h2>
-      <form id="contact-form">
-        <label for="name">Name</label>
-        <input type="text" id="name" required />
-
-        <label for="email">Email</label>
-        <input type="email" id="email" required />
-
-        <label for="message">Message</label>
-        <textarea id="message" rows="5" required></textarea>
-
-        <button type="submit">Send</button>
-        <p id="form-response" class="hidden">Thanks for reaching out! I’ll get back to you soon.</p>
-      </form>
-    </section>
-
-    <!-- Post #1 -->
-    <section id="post1" class="page">
-      <div class="post-single">
-        <h2>My First Blog Post</h2>
-        <p class="meta">Published: July 28, 2025</p>
-        <p>Welcome to my very first post! I’ve always wanted a corner of the internet where thoughts meet words. Here, I’ll share insights on life, tech, and everything between. Let’s build something meaningful together.</p>
-        <p>Drop a comment, share your thoughts, or just say hi. This is the start of an adventure.</p>
-      </div>
-    </section>
-
-    <!-- Post #2 -->
-    <section id="post2" class="page">
-      <div class="post-single">
-        <h2>Why Static Sites Rock</h2>
-        <p class="meta">Published: July 30, 2025</p>
-        <p>Static sites are fast, secure, and easy to deploy. You don’t need a server-side runtime—just HTML, CSS, and a hosting service. That simplicity often translates to fewer headaches and blazing load times.</p>
-        <p>Next time you need a blog or a portfolio, consider going static. Your readers (and your future self) will thank you.</p>
-      </div>
-    </section>
+    <!-- Add more products by copying one of the .product divs -->
   </main>
 
   <footer>
-    <div class="container">
-      <p>© 2025 Emmanuel. All rights reserved.</p>
-    </div>
+    © 2025 My Personal Store — All rights reserved.
   </footer>
 
-  <script>
-    // Toggle mobile navigation
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu   = document.getElementById('nav-menu');
-    navToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('show');
-    });
+  <!-- Snipcart Script -->
+  <div
+    hidden
+    id="snipcart"
+    data-api-key="YOUR_SNIPCART_API_KEY"
+    data-config-add-product-behavior="product-item"
+  ></div>
+  <script src="https://cdn.snipcart.com/themes/v3.0.31/default/snipcart.js"></script>
 
-    // Simple hash-based page routing
-    function showSection() {
-      const hash = location.hash || '#home';
-      document.querySelectorAll('section.page').forEach(sec => {
-        sec.classList.toggle('active', '#' + sec.id === hash);
-      });
-      // hide mobile nav after selection
-      navMenu.classList.remove('show');
-    }
-    window.addEventListener('hashchange', showSection);
-    window.addEventListener('load', showSection);
-
-    // Contact form feedback
-    const form = document.getElementById('contact-form');
-    const resp = document.getElementById('form-response');
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      resp.classList.remove('hidden');
-      form.reset();
-    });
-  </script>
 </body>
 </html>
